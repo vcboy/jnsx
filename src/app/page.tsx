@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { SchoolCard } from "@/components/SchoolCard";
-import { getCategories, getCities, getFeaturedArticles, getSchools } from "@/lib/data";
+import { getCategories, getCities, getFeaturedArticles, getProgramSummaries, getSchools } from "@/lib/data";
 
 // Icons
 function MapPinIcon() {
@@ -62,23 +62,25 @@ export default function Home() {
   const cities = getCities();
   const categories = getCategories();
   const articles = getFeaturedArticles();
-  const privateCount = schools.filter((school) => school.ownership === "民办").length;
+  const programCount = getProgramSummaries().length;
 
   return (
     <main>
       {/* Hero Section */}
       <section className="shell hero">
         <div className="hero-content">
-          <div className="eyebrow">
+          <div className="eyebrow animate-on-load animate-fade-in-up">
             <MapPinIcon />
             <span>给中考后家庭的一张技能升学地图</span>
           </div>
-          <h1>把分散难懂的技工院校信息整理成能核验的择校工具</h1>
-          <p className="lead">
+          <h1 className="animate-on-load animate-fade-in-up delay-100">
+            把分散难懂的技工院校信息整理成能核验的择校工具
+          </h1>
+          <p className="lead animate-on-load animate-fade-in-up delay-200" style={{margin: 0, fontSize: '15px', lineHeight: '1.65', color: 'var(--text-secondary)'}}>
             先从浙江技工院校库开始，按城市、专业、学制和来源状态筛选。每所学校都保留费用、专业、风险提示和来源核验入口，帮助家长少听口头承诺，多看公开材料。
           </p>
-          <div className="hero-actions">
-            <Link href="/schools" className="button button-lg">
+          <div className="hero-actions animate-on-load animate-fade-in-up delay-300">
+            <Link href="/schools" className="button button-amber button-lg">
               <MapPinIcon />
               <span>开始找学校</span>
             </Link>
@@ -87,7 +89,7 @@ export default function Home() {
               <span>先读指南</span>
             </Link>
           </div>
-          <div className="stat-row hero-stats">
+          <div className="hero-stats animate-on-load animate-fade-in-up delay-400">
             <div className="stat">
               <div className="stat-icon stat-icon-primary">
                 <GraduationCapIcon />
@@ -102,8 +104,8 @@ export default function Home() {
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
               </div>
               <div className="stat-content">
-                <strong>{privateCount}</strong>
-                <span>所民办样例重点提示</span>
+                <strong>{programCount}</strong>
+                <span>个专业方向</span>
               </div>
             </div>
             <div className="stat">
@@ -117,7 +119,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <aside className="hero-panel">
+        <aside className="hero-panel animate-on-load animate-slide-in-right delay-200">
           <div className="panel-header">
             <div className="panel-icon">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>

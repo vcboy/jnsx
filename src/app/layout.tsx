@@ -35,7 +35,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="zh-CN">
+    <html lang="zh-CN" data-scroll-behavior="smooth" suppressHydrationWarning>
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&display=swap" rel="stylesheet" />
+      </head>
       <body>
         <header className="topbar">
           <div className="shell nav">
@@ -77,14 +82,7 @@ export default function RootLayout({
             </nav>
           </div>
         </header>
-        <div className="notice">
-          <div className="shell notice-content">
-            <InfoIcon className="notice-icon" />
-            <span className="notice-text">
-              本平台为第三方信息整理与择校参考工具，非政府招生录取平台。报名、录取、学籍注册以教育、人社部门及学校公开公告为准。
-            </span>
-          </div>
-        </div>
+
         {children}
         <footer className="footer">
           <div className="shell">
