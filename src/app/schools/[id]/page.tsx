@@ -57,8 +57,8 @@ export default async function SchoolDetailPage({ params }: { params: Promise<{ i
                     <th>招收文化程度</th>
                     <th>学制</th>
                     <th>计划人数</th>
-                    <th>费用</th>
-                    <th>生源分布</th>
+                    {/* <th>费用</th> */}
+                    {/* <th>生源分布</th> */}
                     <th>来源</th>
                   </tr>
                 </thead>
@@ -71,8 +71,8 @@ export default async function SchoolDetailPage({ params }: { params: Promise<{ i
                       <td data-label="招收文化程度">{program.cultureRequirement ?? "待核验"}</td>
                       <td data-label="学制">{program.duration}</td>
                       <td data-label="计划人数">{program.planCount ?? "待核验"}</td>
-                      <td data-label="费用">{program.tuition}</td>
-                      <td data-label="生源分布">{program.sourceDistribution ?? "待核验"}</td>
+                      {/* <td data-label="费用">{program.tuition}</td> */}
+                      {/* <td data-label="生源分布">{program.sourceDistribution ?? "待核验"}</td> */}
                       <td data-label="来源"><StatusBadge status={program.sourceStatus} /></td>
                     </tr>
                   ))}

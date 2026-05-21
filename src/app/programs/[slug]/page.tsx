@@ -202,7 +202,7 @@ export default async function ProgramDetailPage({ params }: { params: Promise<{ 
                       <th>招收文化程度</th>
                       <th>学制</th>
                       <th>计划人数</th>
-                      <th>生源分布</th>
+                      {/* <th>生源分布</th> */}
                     </tr>
                   </thead>
                   <tbody>
@@ -213,7 +213,7 @@ export default async function ProgramDetailPage({ params }: { params: Promise<{ 
                         <td data-label="招收文化程度">{record.cultureRequirement ?? "待核验"}</td>
                         <td data-label="学制">{record.duration}</td>
                         <td data-label="计划人数">{record.planCount ?? "待核验"}</td>
-                        <td data-label="生源分布">{record.sourceDistribution ?? "待核验"}</td>
+                        {/* <td data-label="生源分布">{record.sourceDistribution ?? "待核验"}</td> */}
                       </tr>
                     ))}
                   </tbody>

@@ -57,10 +57,23 @@ const categoryIcons: Record<string, React.ReactNode> = {
   "智能制造": <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>,
 };
 
+const categorySummaries: Record<string, string> = {
+  "交通与汽车": "汽车维修、新能源检测、无人机等方向，适合关注设备操作与交通服务的家庭。",
+  "农业与生态": "农艺、园林、茶叶加工等方向，关注地方产业、生态技能与实训条件。",
+  "其他方向": "覆盖建筑、中药、导游等分散专业，建议逐项核对课程与出口。",
+  "商贸服务": "电商、物流、市场服务等方向，重点看平台实训、沟通能力和运营基础。",
+  "数字技术": "计算机、数字媒体、物联网等方向，重点看课程深度、设备和升学衔接。",
+  "文化艺术": "设计、室内、广告等方向，适合有审美表达兴趣的学生，需核验作品训练。",
+  "现代服务": "幼儿服务、烹饪、酒店、健康服务等方向，重点看服务边界与实训安排。",
+  "智能制造": "数控、机电、机器人等方向，强调车间实训、设备操作和制造基础。",
+  "健康服务": "康养、护理辅助等服务方向，重点核验实训场景、岗位边界和升学出口。",
+};
+
 export default function Home() {
   const schools = getSchools();
   const cities = getCities();
   const categories = getCategories();
+  const orderedCategories = [...categories.filter((category) => category !== "其他方向"), ...categories.filter((category) => category === "其他方向")];
   const articles = getFeaturedArticles();
   const programCount = getProgramSummaries().length;
 
@@ -202,12 +215,14 @@ export default function Home() {
             </Link>
           </div>
           <div className="programs-grid">
-            {categories.map((category) => (
+            {orderedCategories.map((category) => (
               <Link className="program-card" key={category} href={`/schools?category=${encodeURIComponent(category)}`}>
-                <div className="program-icon">{categoryIcons[category] || <GraduationCapIcon />}</div>
                 <div className="program-content">
-                  <h3>{category}</h3>
-                  <p className="muted">查看开设该方向的学校与对应学制。</p>
+                  <div className="program-card-head">
+                    <div className="program-icon">{categoryIcons[category] || <GraduationCapIcon />}</div>
+                    <h3>{category}</h3>
+                  </div>
+                  <p className="muted">{categorySummaries[category] || "查看开设该方向的学校、课程重点与对应学制，建议结合来源状态逐项核验。"}</p>
                 </div>
                 <span className="program-arrow"><ChevronRightIcon /></span>
               </Link>
